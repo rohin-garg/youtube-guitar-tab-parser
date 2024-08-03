@@ -59,6 +59,14 @@ Make sure to install the following libraries:
 
     The script will prompt you (through the terminal output) to input the URL of the YouTube video you want to download and process. Later, when prompted, select the rectangle that contains the tablature in the image (drag the mouse from the top left to the bottom right corner while pressing and holding). The final PDF will be at the location listed in the terminal. 
 
+## Example
+If you run it on [this song](https://www.youtube.com/watch?v=YiC3nvYPPas), this is what the beginning of the output looks like
+
+![image](https://github.com/user-attachments/assets/c0a3533a-45d3-4b4c-9ea4-de7378fa5738).
+
+Note for this guitarist in particular, the end of one line shares a measure with the beginning of the next (but this depends on the video).
+
+
 ## Contributing
 
 Contributions are welcome! Please open an issue or submit a pull request for any improvements or bug fixes.
