@@ -35,7 +35,6 @@ def extract_frames(video_path, output_folder, interval=2):
         if count % frame_interval == 0:
             frame_filename = os.path.join(output_folder, f"frame_{frame_count:04d}.jpg")
             cv2.imwrite(frame_filename, frame)
-            print(f"Saved {frame_filename}")
             frame_count += 1
         success, frame = video.read()
         count += 1

@@ -47,4 +47,5 @@ def make_pdf(main_directory):
             use_files.append(imp_files[i])
 
     images_to_pdf(use_files, output_pdf_path + '/output.pdf')
+    print("Output is at " + output_pdf_path + '/output.pdf')
 

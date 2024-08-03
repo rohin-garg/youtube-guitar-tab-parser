@@ -17,7 +17,6 @@ def extract_tab(main_directory):
     med_path = imp_files[len(imp_files) // 2]
     bounds = prompt_coords(med_path)
 
-    print(bounds)
     for image_path in imp_files:
         if count > 0:
             image = cv2.imread(image_path)
