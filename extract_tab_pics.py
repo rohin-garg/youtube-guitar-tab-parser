@@ -27,5 +27,3 @@ def extract_tab(main_directory):
             cv2.imwrite(main_directory + f"/tabs/tab{count:04d}.png", image_section);
 
         count += 1
-
-# extract_tab()

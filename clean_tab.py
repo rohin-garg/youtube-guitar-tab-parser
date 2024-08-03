@@ -44,10 +44,7 @@ def make_pdf(main_directory):
         prv = cv2.cvtColor(prv, cv2.COLOR_BGR2GRAY)
         cur = cv2.cvtColor(cur, cv2.COLOR_BGR2GRAY)
         if error(prv, cur) > THRESHOLD:
-            # display(cv2.imread(imp_files[i]))
             use_files.append(imp_files[i])
 
     images_to_pdf(use_files, output_pdf_path + '/output.pdf')
-
-# make_pdf()
 
