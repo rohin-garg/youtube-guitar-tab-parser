@@ -64,7 +64,7 @@ If you run it on [this song](https://www.youtube.com/watch?v=YiC3nvYPPas), this 
 
 ![image](https://github.com/user-attachments/assets/c0a3533a-45d3-4b4c-9ea4-de7378fa5738).
 
-Note for this guitarist in particular, the end of one line shares a measure with the beginning of the next (but this depends on the video).
+Note for this guitarist in particular, the end of one line shares a measure with the beginning of the next (but this depends on the video). This will probably be fixed at some point, but it works ok for now.
 
 
 ## Contributing
