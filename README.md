@@ -57,7 +57,7 @@ Make sure to install the following libraries:
 
 2. **Follow the prompts**:
 
-    The script will prompt you to input the URL of the YouTube video you want to download and process.
+    The script will prompt you (through the terminal output) to input the URL of the YouTube video you want to download and process. Later, when prompted, select the rectangle that contains the tablature in the image (press and hold from the top left corner and drag the mouse to the bottom right corner). The final pdf will be at the location listed in the terminal. 
 
 ## Contributing
 
