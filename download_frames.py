@@ -4,12 +4,20 @@ import yt_dlp
 
 def download_youtube_video(url, output_path):
     ydl_opts = {
-        'format': 'best[ext=mp4]',  # This will select the best quality single mp4 file
-        'outtmpl': os.path.join(output_path, 'video.%(ext)s')
+        'format': 'bestvideo[ext=mp4]/best[ext=mp4]/bestvideo',
+        'outtmpl': os.path.join(output_path, 'video.%(ext)s'),
+        'postprocessors': [],
+        'merge_output_format': 'mp4',
+        'verbose': True
     }
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-        info = ydl.extract_info(url, download=True)
-        return os.path.join(output_path, f"video.{info['ext']}")
+        try:
+            info = ydl.extract_info(url, download=True)
+            video_path = ydl.prepare_filename(info)
+            return video_path
+        except yt_dlp.utils.DownloadError as e:
+            print(f"Download error: {e}")
+            raise
 
 def extract_frames(video_path, output_folder, interval=2):
     if not os.path.isfile(video_path):
@@ -42,13 +50,41 @@ def extract_frames(video_path, output_folder, interval=2):
     video.release()
     print(f"Extracted {frame_count} frames.")
 
+def resize_images_in_directory(directory):
+    max_height = 500
+    max_width = 1000
+    for filename in os.listdir(directory):
+        file_path = os.path.join(directory, filename)
+        if os.path.isfile(file_path) and filename.lower().endswith(('.png', '.jpg', '.jpeg', '.bmp', '.gif', '.tiff', '.webp')):
+            image = cv2.imread(file_path)
+            if image is None:
+                continue
+
+            height, width = image.shape[:2]
+
+            scale_factor = 1
+            if height > max_height:
+                scale_factor = min(scale_factor, max_height / height)
+            if width > max_width:
+                scale_factor = min(scale_factor, max_width / width)
+
+            if scale_factor < 1:
+                new_size = (int(width * scale_factor), int(height * scale_factor))
+                resized_image = cv2.resize(image, new_size, interpolation=cv2.INTER_AREA)
+                cv2.imwrite(file_path, resized_image)
+
 def download(main_directory):
     youtube_url = input("Enter the YouTube video URL: ")
     output_folder = main_directory
 
-    video_path = download_youtube_video(youtube_url, output_folder)
-    print(f"Video downloaded: {video_path}")
+    try:
+        video_path = download_youtube_video(youtube_url, output_folder)
+        print(f"Video downloaded: {video_path}")
 
-    frames_folder = os.path.join(output_folder, "frames")
-    extract_frames(video_path, frames_folder)
-    print(f"Frames extracted to: {frames_folder}")
+        frames_folder = os.path.join(output_folder, "frames")
+        extract_frames(video_path, frames_folder)
+        resize_images_in_directory(frames_folder)
+        print(f"Frames extracted to: {frames_folder}")
+    except Exception as e:
+        print(f"Error occurred: {e}")
+
