@@ -73,8 +73,7 @@ def resize_images_in_directory(directory):
                 resized_image = cv2.resize(image, new_size, interpolation=cv2.INTER_AREA)
                 cv2.imwrite(file_path, resized_image)
 
-def download(main_directory):
-    youtube_url = input("Enter the YouTube video URL: ")
+def download(main_directory, youtube_url):
     output_folder = main_directory
 
     try:

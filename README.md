@@ -1,6 +1,6 @@
 # YouTube Guitar Tab Parser
 
-YouTube Guitar Tab Parser is a Python tool designed to download and parse guitar tablature from YouTube videos, and compile it into a PDF. This code is optimized for Python 3.8 and might not work for other versions. 
+YouTube Guitar Tab Parser is a Python tool designed to download and parse guitar tablature from YouTube videos, and compile it into a PDF.
 
 ## Features
 
@@ -10,62 +10,53 @@ YouTube Guitar Tab Parser is a Python tool designed to download and parse guitar
 
 ## Requirements
 
-Make sure to install the following libraries:
-
-- OpenCV
-- yt_dlp
-- numpy
-- PIL (Pillow)
+- Python 3.8+
+- uv
 
 ## Installation
 
-1. **Clone the repository**:
+1.  **Clone the repository**:
 
     ```sh
     git clone https://github.com/your-username/youtube-guitar-tab-parser.git
     cd youtube-guitar-tab-parser
     ```
 
-2. **Install the required libraries**:
+2.  **Create and activate a virtual environment**:
 
     ```sh
-    pip install opencv-python yt-dlp numpy pillow
+    uv venv
+    source .venv/bin/activate
     ```
 
-## Configuration
+3.  **Install the required libraries**:
 
-1. **Set the main directory**:
-
-    Modify the path in `main_directory.py` to point to an empty directory where you want to generate the PDF. 
-
-    ```python
-    # main_directory.py
-    output_directory = "/path/to/your/output/directory"
+    ```sh
+    uv pip install -r requirements.txt
     ```
-
-2. **Ensure all files are in the same folder**:
-
-    Make sure that all the files needed for the script to run are in the same folder as `main_directory.py`.
 
 ## Usage
 
-1. **Run the script**:
+1.  **Run the script from the command line**:
 
     ```sh
-    python main.py
+    python main.py "<youtube_url>" <output_directory>
     ```
 
-2. **Follow the prompts**:
+    -   `<youtube_url>`: The URL of the YouTube video you want to parse.
+    -   `<output_directory>`: The path to an empty directory where you want to save the generated PDF and other files.
 
-    The script will prompt you (through the terminal output) to input the URL of the YouTube video you want to download and process. Later, when prompted, select the rectangle that contains the tablature in the image (drag the mouse from the top left to the bottom right corner while pressing and holding). The final PDF will be at the location listed in the terminal. 
+2.  **Follow the prompts**:
+
+    The script will prompt you to select the rectangle that contains the tablature in the image. Drag the mouse from the top-left to the bottom-right corner while holding the mouse button. The final PDF will be saved in the specified output directory.
 
 ## Example
-If you run it on [this song](https://www.youtube.com/watch?v=YiC3nvYPPas), this is what the beginning of the output looks like
 
-![image](https://github.com/user-attachments/assets/c0a3533a-45d3-4b4c-9ea4-de7378fa5738).
+If you run the script on [this song](https://www.youtube.com/watch?v=YiC3nvYPPas), the beginning of the output will look like this:
 
-Note for this guitarist in particular, the end of one line shares a measure with the beginning of the next (but this depends on the video). This will probably be fixed at some point, but it works ok for now.
+![image](https://github.com/user-attachments/assets/c0a3533a-45d3-4b4c-9ea4-de7378fa5738)
 
+**Note**: For some guitarists, the end of one line may share a measure with the beginning of the next. This might be improved in a future update, but it works reasonably well for now.
 
 ## Contributing
 
@@ -74,12 +65,3 @@ Contributions are welcome! Please open an issue or submit a pull request for any
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
-## Acknowledgements
-
-This project utilizes the following libraries:
-
-- [OpenCV](https://opencv.org/)
-- [yt_dlp](https://github.com/yt-dlp/yt-dlp)
-- [numpy](https://numpy.org/)
-- [Pillow (PIL)](https://python-pillow.org/)
