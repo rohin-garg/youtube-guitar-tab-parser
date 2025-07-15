@@ -14,6 +14,9 @@ def extract_tab(main_directory):
             imp_files.append(image_path)
 
     all_bounds = []
+    if len(imp_files) == 0:
+        raise FileNotFoundError("No images found in frames directory, video was likely not downloaded correctly")
+        
     med_path = imp_files[len(imp_files) // 2]
     bounds = prompt_coords(med_path)
 
