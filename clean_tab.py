@@ -79,7 +79,7 @@ def make_pdf(main_directory):
     
     # This threshold is higher because we are comparing larger, scaled images.
     # It may require tuning for different video styles.
-    THRESHOLD = 5000.0
+    THRESHOLD = 2000.0
     
     use_files = []
     prv_scaled_img = None
